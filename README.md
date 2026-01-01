@@ -6,15 +6,20 @@
 
 **数据规模**: 150,000条订单 | 148,788位客户 | 2024年全年数据
 
+**✨ 新增功能**: 🎯 **交互式可视化报表** - 类似 Power BI/Tableau 的现代化交互式仪表板！查看 [交互式可视化指南](INTERACTIVE_VISUALIZATION_GUIDE.md) 了解详情。
+
 ---
 
 ## 🗂️ 项目结构
 
 ```
 NCR_Ride_Analysis/
-├── main.py                          # 主程序入口
+├── main.py                          # 主程序入口（包含交互式报表生成）
+├── run_interactive_dashboard.py     # 🆕 启动交互式Web仪表板
+├── generate_html_reports.py         # 🆕 生成独立HTML交互报表
 ├── ncr_ride_bookings.csv            # 原始数据（150,000条）
 ├── README.md                        # 技术文档（本文件）
+├── INTERACTIVE_VISUALIZATION_GUIDE.md  # 🆕 交互式可视化使用指南
 ├── REPORT.md                        # 业务报告（可视化结果展示）
 ├── modules/                         # 分析模块
 │   ├── config.py                   # 全局配置
@@ -24,13 +29,16 @@ NCR_Ride_Analysis/
 │   ├── analysis_rfm.py             # RFM客户细分
 │   ├── rfm_visualizations.py       # RFM可视化
 │   ├── analysis_revenue_prediction.py  # 收入预测
-│   └── dashboard.py                # 综合仪表板
+│   ├── dashboard.py                # 综合仪表板
+│   ├── interactive_dashboard.py    # 🆕 交互式Web仪表板
+│   └── html_reports.py             # 🆕 HTML交互报表生成
 └── analysis_results/               # 输出目录
     ├── 1_customer_patterns.png     # 客户行为分析图
     ├── 2_location_analysis.png     # 位置时间分析图
     ├── 3_rfm_*.png                 # RFM分析图（5张）
     ├── 4_revenue_forecast.png      # 收入预测图
     ├── 5_dashboard.png             # 综合仪表板
+    ├── interactive_*.html          # 🆕 交互式HTML报表（5个）
     └── *.csv                       # 数据结果
 ```
 
@@ -40,19 +48,56 @@ NCR_Ride_Analysis/
 
 ### 环境要求
 - Python 3.8+
-- 依赖库：pandas, numpy, matplotlib, seaborn, scikit-learn, statsmodels, prophet
+- 依赖库：pandas, numpy, matplotlib, seaborn, scikit-learn, statsmodels, prophet, plotly, dash
 
 ### 安装依赖
 ```bash
+# 基础分析依赖
 pip install pandas numpy matplotlib seaborn scikit-learn statsmodels prophet
+
+# 🆕 交互式可视化依赖
+pip install plotly dash dash-bootstrap-components
 ```
 
 ### 运行分析
+
+#### 方式一：完整分析（静态图 + 交互式报表）
 ```bash
 python main.py
 ```
-
 执行完成后，所有图表和数据文件将保存在 `analysis_results/` 目录。
+
+#### 方式二：🆕 仅生成交互式HTML报表
+```bash
+python generate_html_reports.py
+```
+生成可直接在浏览器中打开的交互式HTML文件。
+
+#### 方式三：🆕 启动实时Web仪表板
+```bash
+python run_interactive_dashboard.py
+```
+访问 `http://127.0.0.1:8050/` 查看实时交互式仪表板。
+
+💡 **推荐**: 先运行 `python main.py` 生成所有分析数据，然后使用交互式报表进行深入探索。
+
+---
+
+## 🎯 交互式可视化特性
+
+### 📊 独立HTML报表（无需服务器）
+- ✅ 可直接在浏览器中打开
+- ✅ 完全交互式图表（缩放、筛选、悬停）
+- ✅ 5个专题报表覆盖所有分析维度
+- ✅ 可分享给团队成员
+
+### 🌐 实时Web仪表板
+- ✅ 现代化UI设计（类似Power BI/Tableau）
+- ✅ 多标签页导航
+- ✅ 响应式布局
+- ✅ 实时数据交互
+
+详细使用说明请查看：[交互式可视化指南](INTERACTIVE_VISUALIZATION_GUIDE.md)
 
 ---
 
