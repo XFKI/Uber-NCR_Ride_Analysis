@@ -8,6 +8,8 @@ from .analysis_locations import analyze_locations_enhanced
 from .analysis_rfm import analyze_rfm_ml
 from .dashboard import create_comprehensive_dashboard
 from .analysis_revenue_prediction import run_revenue_prediction_analysis
+from .interactive_dashboard import create_interactive_dashboard, launch_dashboard
+from .html_reports import generate_interactive_html_reports
 
 __all__ = [
     'OUTPUT_DIR',
@@ -19,5 +21,8 @@ __all__ = [
     'analyze_locations_enhanced',
     'analyze_rfm_ml',
     'create_comprehensive_dashboard',
-    'run_revenue_prediction_analysis'
+    'run_revenue_prediction_analysis',
+    'create_interactive_dashboard',
+    'launch_dashboard',
+    'generate_interactive_html_reports'
 ]

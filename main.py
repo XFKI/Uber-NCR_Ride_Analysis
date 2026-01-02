@@ -13,7 +13,8 @@ from modules import (
     analyze_locations_enhanced,
     analyze_rfm_ml,
     create_comprehensive_dashboard,
-    run_revenue_prediction_analysis
+    run_revenue_prediction_analysis,
+    generate_interactive_html_reports
 )
 
 
@@ -61,8 +62,24 @@ def main():
         # Generate comprehensive dashboard
         create_comprehensive_dashboard(df)
         
+        # Generate interactive HTML reports
+        print("\n" + "="*80)
+        print("GENERATING INTERACTIVE HTML REPORTS")
+        print("="*80)
+        generate_interactive_html_reports(df)
+        
         print("\n" + "="*80)
         print("ALL TASKS COMPLETED SUCCESSFULLY!")
+        print("="*80)
+        print("\n📊 Interactive Reports Generated:")
+        print("   - interactive_overview.html")
+        print("   - interactive_customer_analysis.html")
+        print("   - interactive_location_analysis.html")
+        print("   - interactive_revenue_analysis.html")
+        print("   - interactive_comprehensive_dashboard.html")
+        print("\n💡 Tips:")
+        print("   • Open HTML files in your browser for interactive charts")
+        print("   • Run 'python run_interactive_dashboard.py' for live dashboard")
         print("="*80 + "\n")
 
 
